@@ -1,0 +1,67 @@
+.content{
+    background-color: #262626;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 2rem;
+   
+    font-family: 'Poppins', sans-serif;
+    a{
+        display: none;
+    }
+
+    h5{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left:2rem ;
+    }
+    }
+
+    .dis_icon{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+
+        .iconify{
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .footsocialicons{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+       
+        .iconify{
+            font-size: 2rem;
+        }
+    }
+
+
+    
+    .footimglogo{
+        flex-direction: column;
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-between;
+        height: 7rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    
+        img{
+            height: 100%;
+        }
+    }
+
+  
+    
+    
+            
+            
