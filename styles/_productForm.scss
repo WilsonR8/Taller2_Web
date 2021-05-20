@@ -1,0 +1,34 @@
+.productForm {
+
+    &__label{
+        display: block;
+        margin-top: 1rem;
+
+        &--checkbox{
+            margin-top: 0.5rem;
+        }
+    }
+
+    &__input{
+        display: block;
+    }
+
+    &__checkbox{
+       
+    }
+
+    &__btn{
+        display: block;
+        margin-top: 1rem;
+    }
+
+    &__success{
+        color: chartreuse;
+    }
+
+    &__error{
+        color:red;
+    }
+
+
+}
