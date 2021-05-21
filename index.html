@@ -57,15 +57,51 @@
             </div>
 
 
-            <div class="filters">
+            <div class="options">
                 <a href="#" class="title">All Courses</a>
-                <a href="#" class="filter">Filter</a>
+                <a href="#" class="filterTitle">Filter</a>
                 <div class="filter_icon">
                     <span class="iconify" data-inline="false" data-icon="bx:bx-filter-alt"></span>
                     <span class="iconify" data-inline="false" data-icon="ant-design:shopping-cart-outlined"></span>
                 </div>
-
             </div>
+
+           
+            <form class="filters">
+                <!-- Filter By Type -->
+                <label for="type" class="productForm__label">Type of product</label>
+                <select id="type" class="productForm__input" name="type">
+                    <option value=""> Select type</option>
+                    <option value="courses">Courses</option>
+                    <option value="assets">Assets</option>
+                    <option value="pins">Pins</option>
+                </select>
+          
+                  <!-- Filter By Type -->
+
+                  <!-- Filter By Price -->
+                <label for="price" class="productForm__label">Price range</label>
+                <select id="price" class="productForm__input" name="price">
+                    <option value=""> Select price range</option>
+                    <option value="0">less than 1000</option>
+                    <option value="1">between 1000 and 5000</option>
+                    <option value="2">more than 5000</option>
+                </select>
+                <!-- Filter By Price -->
+
+                <!-- Order by Rate-->
+                <label for="order" class="productForm__label">Order</label>
+                <select id="order" class="productForm__input" name="order">
+                    <option value=""> Order by</option>
+                    <option value="rate_asc">Rate (Most popular)</option>
+                    <option value="rate_desc">Rate (Less popular)</option>
+                    <option value="Alpha">Alphabetic (A-Z)</option>
+                    <option value="createdAt"> Recent </option>
+                </select>
+
+            </form>
+           
+
              <!-- Body Store -->
             <section class="list">
              <a class="items" href="#">

@@ -60,6 +60,7 @@ productForm.addEventListener('submit', function (event) {
     price: parseInt(productForm.price.value),
     rate: parseInt(productForm.rate.value),
     description: productForm.description.value,
+    createdAt: Date.now(),
 
 
   };

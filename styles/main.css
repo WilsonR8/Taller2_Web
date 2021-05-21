@@ -81,23 +81,23 @@ a {
   height: 35px;
 }
 
-.filters {
+.options {
   margin: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.filters .filter {
+.options .filterTitle {
   display: none;
 }
 
-.filters .title {
+.options .title {
   color: #262626;
   font-size: 1.5rem;
 }
 
-.filters .filter_icon {
+.options .filter_icon {
   display: flex;
   flex-wrap: wrap;
   height: 35px;
