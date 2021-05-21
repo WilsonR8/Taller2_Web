@@ -16,10 +16,13 @@ const productForm = document.querySelector('.productForm');
 const productFormLoading = document.querySelector('.productForm__loading');
 const productFormSuccess = document.querySelector('.productForm__success');
 const productFormError = document.querySelector('.productForm__error');
-const productFormImg = document.querySelector('.productForm__img');
+const productFormImages = document.querySelector('.productForm__images');
+
 
 const coursesFields = document.querySelector('.coursesFields');
 const pinsFields = document.querySelector('.pinsFields');
+
+const imageFiles = [];
 
 
 productForm.type.addEventListener('change', function () {
@@ -43,12 +46,18 @@ productForm.type.addEventListener('change', function () {
 
 
 productForm.image.addEventListener('change', function () {
-  var reader = new FileReader();
+  const file = productForm.image.files[0];
+  if (!file) return;
+  const reader = new FileReader();
   reader.onload = function (event) {
-    productFormImg.classList.remove('hidden');
+    const productFormImg = document.createElement('img');
+    productFormImg.classList.add('productForm__img');
     productFormImg.setAttribute('src', event.target.result);
+    productFormImages.appendChild(productFormImg);
   }
-  reader.readAsDataURL(productForm.image.files[0]);
+  reader.readAsDataURL(file);
+
+  imageFiles.push(file);
 
 });
 
@@ -114,45 +123,58 @@ productForm.addEventListener('submit', function (event) {
   if (error) {
     productFormError.innerHTML = error;
     productFormError.classList.remove('hidden');
-    return;
+    //return;
   } else {
     productFormError.classList.add('hidden');
   }
 
+  console.log(imageFiles);
 
-  const file = productForm.image.files[0];
-  var storageRef = firebase.storage().ref();
-  var fileRef = storageRef.child(`images/${product.type}/${file.name}`);
+  // Espera que suba la info a firestore
+  db.collection("products").add(product).then(function (docRef) {
+    console.log('document added', docRef.id);
+    productFormLoading.classList.add('hidden');
+    productFormSuccess.classList.remove('hidden');
 
-  //Espera que suba la imagen
-  fileRef.put(file).then((snapshot) => {
+    const uploadPromises=[];
+    const downloadUrlPromises = [];
 
-    // Espera la url de descarga
-    snapshot.ref.getDownloadURL().then((downloadURL) => {
-      productFormLoading.classList.remove('hidden');
-      product.imageUrl = downloadURL;
-      product.imageRef=snapshot.ref.fullPath;
+    imageFiles.forEach(function (file) {
+      var storageRef = firebase.storage().ref();
+      var fileRef = storageRef.child(`products/${docRef.id}/${file.name}`);
 
-      // Espera que suba la info a firestore
-      db.collection("products").add(product).then(function (docRef) {
-        console.log('document added', docRef.id);
-        productFormLoading.classList.add('hidden');
-        productFormSuccess.classList.remove('hidden');
-      })
-        .catch(function (error) {
-          productFormLoading.classList.add('hidden');
-          productFormError.classList.remove('hidden');
-        });
-
-
-      console.log('File available at', downloadURL);
+      //Espera que suba la imagen
+      uploadPromises.push(fileRef.put(file));
+   
     });
 
+    Promise.all(uploadPromises).then(function(snapshots){
+      snapshots.forEach(function(snapshot){
+        //Espera Url de la imagen
+        downloadUrlPromises.push(snapshot.ref.getDownloadURL());
+      });
+
+      Promise.all(downloadUrlPromises).then(function(downloadURLs){
+        console.log(downloadURLs);
+      });
 
 
-    console.log(snapshot);
-    console.log('Uploaded a blob or file!');
-  });
+    })
+      
+    /*
+    .then((downloadURL) => {
+          productFormLoading.classList.remove('hidden');
+          product.imageUrl = downloadURL;
+          product.imageRef = snapshot.ref.fullPath;
 
+          console.log('File available at', downloadURL);
+        });
+    */
+
+  })
+    .catch(function (error) {
+      productFormLoading.classList.add('hidden');
+      productFormError.classList.remove('hidden');
+    });
 
 });
