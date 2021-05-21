@@ -123,20 +123,26 @@ productForm.addEventListener('submit', function (event) {
   if (error) {
     productFormError.innerHTML = error;
     productFormError.classList.remove('hidden');
-    //return;
+    return;
   } else {
     productFormError.classList.add('hidden');
   }
 
   console.log(imageFiles);
 
+  productFormLoading.classList.remove('hidden');
+  productFormError.classList.add('hidden');
+
+  const genericCatch = function (error) {
+    productFormLoading.classList.add('hidden');
+    productFormError.classList.remove('hidden');
+    productFormError.innerHTML = 'There was an error in the product upload';
+  }
+
   // Espera que suba la info a firestore
   db.collection("products").add(product).then(function (docRef) {
-    console.log('document added', docRef.id);
-    productFormLoading.classList.add('hidden');
-    productFormSuccess.classList.remove('hidden');
 
-    const uploadPromises=[];
+    const uploadPromises = [];
     const downloadUrlPromises = [];
 
     imageFiles.forEach(function (file) {
@@ -145,36 +151,39 @@ productForm.addEventListener('submit', function (event) {
 
       //Espera que suba la imagen
       uploadPromises.push(fileRef.put(file));
-   
+
     });
 
-    Promise.all(uploadPromises).then(function(snapshots){
-      snapshots.forEach(function(snapshot){
+    Promise.all(uploadPromises).then(function (snapshots) {
+      snapshots.forEach(function (snapshot) {
         //Espera Url de la imagen
         downloadUrlPromises.push(snapshot.ref.getDownloadURL());
       });
 
-      Promise.all(downloadUrlPromises).then(function(downloadURLs){
-        console.log(downloadURLs);
-      });
+      Promise.all(downloadUrlPromises).then(function (downloadURLs) {
 
-
-    })
-      
-    /*
-    .then((downloadURL) => {
-          productFormLoading.classList.remove('hidden');
-          product.imageUrl = downloadURL;
-          product.imageRef = snapshot.ref.fullPath;
-
-          console.log('File available at', downloadURL);
+        const images = [];
+        downloadURLs.forEach(function (url, index) {
+          images.push({
+            url: url,
+            ref: snapshots[index].ref.fullPath
+          });
         });
-    */
 
+        console.log(downloadURLs);
+
+        db.collection("products").doc(docRef.id).update({
+          images: images
+        }).then(function () {
+          productFormLoading.classList.add('hidden');
+          productFormSuccess.classList.remove('hidden');
+        })
+        .catch(genericCatch);
+      })
+      .catch(genericCatch);
+    })
+    .catch(genericCatch);
   })
-    .catch(function (error) {
-      productFormLoading.classList.add('hidden');
-      productFormError.classList.remove('hidden');
-    });
+    .catch(genericCatch);
 
 });
