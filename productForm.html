@@ -105,13 +105,18 @@
         </div>
         <!--  Pins Checkbox -->
 
+        <img class="productForm__img hidden" src=""/>
+        <label for="image" class="productForm__label">Image</label>
+        <input multiple accept=".jpg,.png" id="image" class="productForm__input" name="image" type="file">
+
 
         <button class="productForm__label productForm__btn" type="submit"> enviar</button>
     </form>
 
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>\
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
 
     <script src="./scripts/productForm.js"></script>
 

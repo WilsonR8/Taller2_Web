@@ -10,11 +10,13 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 const productForm = document.querySelector('.productForm');
 const productFormLoading = document.querySelector('.productForm__loading');
 const productFormSuccess = document.querySelector('.productForm__success');
 const productFormError = document.querySelector('.productForm__error');
+const productFormImg = document.querySelector('.productForm__img');
 
 const coursesFields = document.querySelector('.coursesFields');
 const pinsFields = document.querySelector('.pinsFields');
@@ -23,6 +25,7 @@ const pinsFields = document.querySelector('.pinsFields');
 productForm.type.addEventListener('change', function () {
   console.log(productForm.type.value);
   coursesFields.classList.add('hidden');
+  pinsFields.classList.add('hidden');
   switch (productForm.type.value) {
     case 'courses':
       coursesFields.classList.remove('hidden');
@@ -38,6 +41,18 @@ productForm.type.addEventListener('change', function () {
   }
 });
 
+
+productForm.image.addEventListener('change', function () {
+  var reader = new FileReader();
+  reader.onload = function (event) {
+    productFormImg.classList.remove('hidden');
+    productFormImg.setAttribute('src', event.target.result);
+  }
+  reader.readAsDataURL(productForm.image.files[0]);
+
+});
+
+
 productForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -49,19 +64,19 @@ productForm.addEventListener('submit', function (event) {
     price: parseInt(productForm.price.value),
     rate: parseInt(productForm.rate.value),
     description: productForm.description.value,
-  
+
 
   };
 
   switch (product.type) {
     case 'pins':
-      product.size=[];
+      product.size = [];
       if (productForm.size_s.checked) product.size.push('s');
       if (productForm.size_l.checked) product.size.push('l');
       break;
 
     case 'courses':
-      product.software=[];
+      product.software = [];
       if (productForm.soft_pr.checked) product.software.push('pr');
       if (productForm.soft_ae.checked) product.software.push('ae');
       if (productForm.soft_ai.checked) product.software.push('ai');
@@ -103,17 +118,41 @@ productForm.addEventListener('submit', function (event) {
   } else {
     productFormError.classList.add('hidden');
   }
-  console.log(product);
 
-  productFormLoading.classList.remove('hidden');
-  db.collection("products").add(product).then(function (docRef) {
-    console.log('document added', docRef.id);
-    productFormLoading.classList.add('hidden');
-    productFormSuccess.classList.remove('hidden');
-  })
-    .catch(function (error) {
-      productFormLoading.classList.add('hidden');
-      productFormError.classList.remove('hidden');
+
+  const file = productForm.image.files[0];
+  var storageRef = firebase.storage().ref();
+  var fileRef = storageRef.child(`images/${product.type}/${file.name}`);
+
+  //Espera que suba la imagen
+  fileRef.put(file).then((snapshot) => {
+
+    // Espera la url de descarga
+    snapshot.ref.getDownloadURL().then((downloadURL) => {
+      productFormLoading.classList.remove('hidden');
+      product.imageUrl = downloadURL;
+      product.imageRef=snapshot.ref.fullPath;
+
+      // Espera que suba la info a firestore
+      db.collection("products").add(product).then(function (docRef) {
+        console.log('document added', docRef.id);
+        productFormLoading.classList.add('hidden');
+        productFormSuccess.classList.remove('hidden');
+      })
+        .catch(function (error) {
+          productFormLoading.classList.add('hidden');
+          productFormError.classList.remove('hidden');
+        });
+
+
+      console.log('File available at', downloadURL);
     });
+
+
+
+    console.log(snapshot);
+    console.log('Uploaded a blob or file!');
+  });
+
 
 });

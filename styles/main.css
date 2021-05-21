@@ -24,6 +24,10 @@
 .productForm__error {
   color: red;
 }
+.productForm__img {
+  width: 200px;
+  margin-top: 1rem;
+}
 
 .side_nav {
   display: none;
