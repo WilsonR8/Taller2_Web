@@ -11,6 +11,10 @@ const productDescription = document.querySelector('.product__description');
 const productPrice = document.querySelector('.product__price');
 const productType = document.querySelector('.product__type');
 
+function getTypeLabel (type){
+
+}
+
 db.collection('products')
 .doc(id)
 .get()
