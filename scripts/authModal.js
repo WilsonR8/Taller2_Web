@@ -78,8 +78,58 @@ authForm.addEventListener('submit', function (event) {
       .catch((error) => {
         modalError.innerText = error.message;
       });
+  }else {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        console.log(user);
+
+        const userDoc = {
+          firstname,
+          lastname: lastname,
+          email: email,
+        };
+        db.collection('users').doc(user.uid).set(userDoc);
+        setLoggedUser(userDoc, user.uid);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        modalError.innerText = error.message;
+      });
   }
+});
 
 
+const authButtons = document.querySelector('.authButtons');
+authButtons.innerHTML = `
+  <button class="authButtons__login hideLoggedIn">Login / Register</button>
+  <button class="authButtons__logout hidden showLoggedIn">Logout</button>
+`;
 
+const authLogin = authButtons.querySelector('.authButtons__login');
+const authLogout = authButtons.querySelector('.authButtons__logout');
+
+function handleModalAppear () {
+  authModal.style.opacity = 1;
+  authModalContent.style.transform = 'translate(0px, 0px)';
+}
+
+authLogin.addEventListener('click', function () {
+  authModal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  setTimeout(handleModalAppear, 1);
+});
+
+function handleCloseModal () {
+  authModal.style.opacity = 0;
+  authModalContent.style.transform = 'translate(0px, -500px)';
+  document.body.style.overflow = 'hidden scroll';
+  setTimeout(function () {
+    authModal.style.display = 'none';
+  }, 500);
+}
+
+authLogout.addEventListener('click', function() {
+  firebase.auth().signOut();
 });

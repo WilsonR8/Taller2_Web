@@ -5,9 +5,9 @@
     width: 100vw;
     height: 100vh;
     padding: 20px;
-    //display: none;
+    display: none;
     transition: opacity .5s ease;
-    //opacity: 0;
+    opacity: 0;
   
     &__backdrop {
       position: absolute;
@@ -25,7 +25,7 @@
       width: 100%;
       max-width: 400px;
       transition: transform .5s ease;
-      //transform: translate(0px, -500px);
+      transform: translate(0px, -500px);
       position: relative;
     }
   

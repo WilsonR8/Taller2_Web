@@ -4,22 +4,24 @@ const handleCollectionResult = (querySnapshot) => {
     list.innerHTML = '';
     querySnapshot.forEach((doc) => {
         const data = doc.data();
-        const items = document.createElement('a');
+        const items = document.createElement('div');
         let img = data.images[0]?.url;
         if (!img) {
             img = './img/placeholder.png';
         }
         items.innerHTML = `
+        <a class="product" href="./product.html?id=${doc.id}&name-${data.name}">
         <img class="items__img" src="${img}">
         <div class="items__info">
             <h1 class="items__title">${data.name}</h1>
             <h3 class="items__price">${data.price}</h3>
             <h4 class="items__rate">${data.rate}</h4>
         </div>
-       `;
-
-        items.classList.add('items');
-        items.setAttribute('href', `./product.html?id=${doc.id}&name-${data.name}`);
+        </a>
+        <button class="hidden showLoggedAdmin" >delete</button>
+        <button class="" >Add to cart</button>
+       `
+       ;
 
         list.appendChild(items);
 

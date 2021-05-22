@@ -44,7 +44,9 @@
   width: 100vw;
   height: 100vh;
   padding: 20px;
+  display: none;
   transition: opacity 0.5s ease;
+  opacity: 0;
 }
 .modal__backdrop {
   position: absolute;
@@ -61,6 +63,7 @@
   width: 100%;
   max-width: 400px;
   transition: transform 0.5s ease;
+  transform: translate(0px, -500px);
   position: relative;
 }
 .modal__close {
