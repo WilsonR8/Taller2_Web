@@ -29,5 +29,17 @@ db.collection('products')
     productDescription.innerText = data.description;
     productPrice.innerText = `$ ${data.price}`;
     productType.innerHTML = `Type: <strong>${data.type}</strong>`;
+
 console.log(doc.id,doc.data());
+});
+
+const cartBtn = document.querySelector('a .items__cartBtn');
+cartBtn.addEventListener('click', function () {
+    /*cart.push(data);
+    localStorage.setItem('store__cart', JSON.stringify(cart));
+    cartBtnNumber.innerText = cart.length;*/
+  addToMyCart({
+    ...data,
+    id: doc.id,
+  });
 });

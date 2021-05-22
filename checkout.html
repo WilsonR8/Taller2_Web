@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section class="checkout">
+
+
+        <form class="checkout__form">
+
+            <h3 class="checkout__poptions">Your Details</h3>
+            <div class="field">
+                <label class="field__label" for="fname">Full Name</label>
+                <input class="field__input" id="fname" name="fname" type="text" placeholder="">
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="email">Email Address</label>
+                <input class="field__input" id="email" name="email" type="text" placeholder="">
+            </div>
+            <div class="field">
+                <label class="field__label" for="country">Country</label>
+                <input class="field__input" id="country" name="country" type="text" placeholder="">
+
+            <h3 class="checkout__poptions">Payment Options</h3>
+            <div class="field">
+                <label class="field__label" for="ccnumber">Card number</label>
+                <input class="field__input" id="ccnumber" name="ccnumber" type="number" placeholder="">
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="cvc">CVC</label>
+                <input class="field__input" id="cvc" name="cvc" type="number" placeholder="">
+            </div>
+            <div class="field">
+                <label class="field__label" for="expires">Expires</label>
+                <input class="field__input" id="expires" name="expires" type="number" placeholder="date-year">
+            </div>
+
+        <button type="submit">Complete Purchase</button>
+
+        </form>
+
+    </section>
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+
+    <script src="./scripts/general.js"></script>
+    <script src="scripts/checkout.js"></script>
+    <script src="./scripts/authUtils.js"></script>
+</body>
+
+</html>
