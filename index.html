@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-           
+
             <form class="filters">
                 <!-- Filter By Type -->
                 <label for="type" class="productForm__label">Type of product</label>
@@ -76,10 +76,22 @@
                     <option value="assets">Assets</option>
                     <option value="pins">Pins</option>
                 </select>
-          
-                  <!-- Filter By Type -->
+                <!-- Filter By Type -->
 
-                  <!-- Filter By Price -->
+                <!-- Filter By software -->
+                <label for="software" class="productForm__label">Type of software</label>
+                <select id="software" class="productForm__input" name="software">
+                    <option value=""> Select a software</option>
+                    <option value="pr">Premiere Pro</option>
+                    <option value="ae">After Effects</option>
+                    <option value="ai">Illustrator</option>
+                    <option value="id">InDesign</option>
+                    <option value="ps">Photoshop</option>
+                    <option value="lr">Lightroom</option>
+                </select>
+                <!-- Filter By software -->
+
+                <!-- Filter By Price -->
                 <label for="price" class="productForm__label">Price range</label>
                 <select id="price" class="productForm__input" name="price">
                     <option value=""> Select price range</option>
@@ -95,23 +107,23 @@
                     <option value=""> Order by</option>
                     <option value="rate_asc">Rate (Most popular)</option>
                     <option value="rate_desc">Rate (Less popular)</option>
-                    <option value="Alpha">Alphabetic (A-Z)</option>
+                    <option value="alpha">Alphabetic (A-Z)</option>
                     <option value="createdAt"> Recent </option>
                 </select>
 
             </form>
-           
 
-             <!-- Body Store -->
+
+            <!-- Body Store -->
             <section class="list">
-             <a class="items" href="#">
-                   
-            </a>
+                <a class="items" href="#">
 
-            <a></a>   
+                </a>
+
+                <a></a>
             </section>
-             <!-- Body Store --> 
-            
+            <!-- Body Store -->
+
 
         </section>
         <!-- Main Nav -->
@@ -124,10 +136,10 @@
 
             <div class="footme">
                 <div class="dis_icon">
-                <h5>Me</h5>
-                <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>  
+                    <h5>Me</h5>
+                    <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>
                 </div>
-               
+
                 <a href="#">About</a>
                 <a href="#">Projects</a>
                 <a href="#">Tutorials</a>
@@ -135,10 +147,10 @@
 
             <div class="footdiscover">
                 <div class="dis_icon">
-                <h5>Discover</h5>
-                <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>   
+                    <h5>Discover</h5>
+                    <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>
                 </div>
-                
+
                 <a href="#">After Effects</a>
                 <a href="#">Premiere Pro</a>
                 <a href="#">Ilustrator</a>
@@ -148,10 +160,10 @@
             </div>
             <div class="foothelp">
                 <div class="dis_icon">
-                <h5>Helpfull Links</h5>
-                <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>  
+                    <h5>Helpfull Links</h5>
+                    <span class="iconify" data-inline="false" data-icon="eva:arrow-ios-downward-outline"></span>
                 </div>
-               
+
                 <a href="#">Privacy Policy</a>
                 <a href="#">Cookies Policy</a>
                 <a href="#">Terms & Conditions</a>
@@ -164,10 +176,10 @@
             </div>
 
             <div class="footsocialicons">
-            <span class="iconify" data-inline="false" data-icon="brandico:facebook"></span>
-            <span class="iconify" data-inline="false" data-icon="akar-icons:twitter-fill"></span>
-            <span class="iconify" data-inline="false" data-icon="akar-icons:instagram-fill"></span>
-            <span class="iconify" data-inline="false" data-icon="ant-design:behance-outlined"></span>
+                <span class="iconify" data-inline="false" data-icon="brandico:facebook"></span>
+                <span class="iconify" data-inline="false" data-icon="akar-icons:twitter-fill"></span>
+                <span class="iconify" data-inline="false" data-icon="akar-icons:instagram-fill"></span>
+                <span class="iconify" data-inline="false" data-icon="ant-design:behance-outlined"></span>
             </div>
 
             <div class="footimglogo">
@@ -185,8 +197,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
 
-<script src="./scripts/general.js"></script>
-<script src="./scripts/store.js"></script>
+    <script src="./scripts/general.js"></script>
+    <script src="./scripts/store.js"></script>
 </body>
 
 </html>

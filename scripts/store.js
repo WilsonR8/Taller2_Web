@@ -19,7 +19,7 @@ const handleCollectionResult = (querySnapshot) => {
        `;
 
         items.classList.add('items');
-        items.setAttribute('href', 'a');
+        items.setAttribute('href', `./product.html?id=${doc.id}&name-${data.name}`);
 
         list.appendChild(items);
 
@@ -32,12 +32,15 @@ const filters = document.querySelector('.filters');
 
 filters.addEventListener('change', function () {
     console.log(filters.price.value);
+    console.log(filters.software.value);
 
     let productCollection = db.collection('products');
     //Filtroooo de type 
     if (filters.type.value) {
         productCollection = productCollection.where('type', '==', filters.type.value)
     }
+
+
     //Filtroooo de precio
     if (filters.price.value) {
         switch (filters.price.value) {
@@ -50,7 +53,19 @@ filters.addEventListener('change', function () {
         }
     }
 
-    
+    //Ordenamiento 
+    if (filters.order.value) {
+        switch (filters.order.value) {
+            case 'rate_asc': productCollection = productCollection.orderBy('rate', 'asc')
+                break;
+            case 'rate_desc': productCollection = productCollection.orderBy('rate', 'desc')
+                break;
+            case 'alpha': productCollection = productCollection.orderBy('name', 'asc')
+                break;
+            case 'createdAt': productCollection = productCollection.orderBy('createdAt', 'desc')
+                break;
+        }
+    }
 
 
     productCollection.get().then(handleCollectionResult)
@@ -58,10 +73,7 @@ filters.addEventListener('change', function () {
 
 });
 
-
-
-
-db.collection('products')
+let productCollection = db.collection('products')
     .get()
     .then(handleCollectionResult)
 
