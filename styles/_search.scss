@@ -21,7 +21,6 @@
 
 a{
     text-decoration: none;
-    color: whitesmoke;
 }
 
 .search_wrap .input{
@@ -71,4 +70,11 @@ justify-content: space-between;
 .filter_icon .iconify{
     font-size: 25px;
     margin-left: 0.5rem;
+    color:  #262626;
+}
+
+.filter_icon .cartBtn .iconify{
+    font-size: 25px;
+    margin-left: 0.5rem;
+    color:  #262626;
 }

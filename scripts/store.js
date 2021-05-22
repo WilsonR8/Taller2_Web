@@ -1,5 +1,6 @@
 const list = document.querySelector('.list');
 
+
 const handleCollectionResult = (querySnapshot) => {
     list.innerHTML = '';
     querySnapshot.forEach((doc) => {
@@ -12,6 +13,9 @@ const handleCollectionResult = (querySnapshot) => {
         items.innerHTML = `
         <a class="product" href="./product.html?id=${doc.id}&name-${data.name}">
         <img class="items__img" src="${img}">
+        </a>
+
+        <a class="product" href="./product.html?id=${doc.id}&name-${data.name}">
         <div class="items__info">
             <h1 class="items__title">${data.name}</h1>
             <h3 class="items__price">${data.price}</h3>
@@ -19,15 +23,25 @@ const handleCollectionResult = (querySnapshot) => {
         </div>
         </a>
         <button class="hidden showLoggedAdmin" >delete</button>
-        <button class="" >Add to cart</button>
+        <button class="items__cartBtn" >Add to cart</button>
        `
        ;
 
         list.appendChild(items);
 
-    });
-}
-
+        const cartBtn = items.querySelector('.items__cartBtn');
+        cartBtn.addEventListener('click', function () {
+            cart.push(data);
+            localStorage.setItem('store__cart', JSON.stringify(cart));
+            cartBtnNumber.innerText = cart.length;
+          /*addToMyCart({
+            ...data,
+            id: doc.id,
+          });*/
+          //localStorage.setItem('store__cart', JSON.stringify(cart));
+        });
+      });
+    }
 
 
 const filters = document.querySelector('.filters');

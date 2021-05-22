@@ -34,3 +34,16 @@ firebase.auth().onAuthStateChanged((user) => {
     userAuthChanged(false);
   }
 });
+
+
+let cart=[];
+const cartBtnNumber = document.querySelector('.cartBtn .cartNumber');
+
+const cartFrontLS = localStorage.getItem('store__cart');
+if(cartFrontLS){
+    cart=JSON.parse(cartFrontLS);
+    if(cartBtnNumber){
+      cartBtnNumber.innerText=cart.length;
+    }
+    
+}

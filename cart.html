@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
+
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </head>
@@ -43,6 +44,7 @@
 
         <!-- Main Nav -->
         <section class="main_nav">
+            <!-- Search bar -->
             <div class="search">
                 <div class="search_wrap">
                     <input type="text" class="input" placeholder="Search">
@@ -53,70 +55,30 @@
                 <div class="menu_icon">
                     <span class="iconify" data-inline="false" data-icon="entypo:menu"></span>
                 </div>
-                <div class="authButtons"></div>
+
             </div>
+            <!-- Search bar -->
 
-
+            <!-- Option header -->
             <div class="options">
-                <a href="#" class="title">All Courses</a>
-                <a href="#" class="filterTitle">Filter</a>
+                <a href="./index.html" class="title">Back</a>
                 <div class="filter_icon">
                     <span class="iconify" data-inline="false" data-icon="bx:bx-filter-alt"></span>
-                    <a href="./cart.html" class="cartBtn"><span class="iconify" data-inline="false" data-icon="ant-design:shopping-cart-outlined"></span> <span class="cartNumber"></span></a>
+                    <span class="iconify" data-inline="false" data-icon="ant-design:shopping-cart-outlined"></span>
                 </div>
             </div>
+            <!-- Option header -->
 
-
-            <form class="filters">
-                <!-- Filter By Type -->
-                <label for="type" class="productForm__label">Type of product</label>
-                <select id="type" class="productForm__input" name="type">
-                    <option value=""> Select type</option>
-                    <option value="courses">Courses</option>
-                    <option value="assets">Assets</option>
-                    <option value="pins">Pins</option>
-                </select>
-                <!-- Filter By Type -->
-
-                <!-- Filter By software -->
-                <label for="soft" class="productForm__label">Type of software</label>
-                <select id="soft" class="productForm__input" name="soft">
-                    <option value=""> Select a software</option>
-                    <option value="pr">Premiere Pro</option>
-                    <option value="ae">After Effects</option>
-                    <option value="ai">Illustrator</option>
-                    <option value="id">InDesign</option>
-                    <option value="ps">Photoshop</option>
-                    <option value="lr">Lightroom</option>
-                </select>
-                <!-- Filter By software -->
-
-                <!-- Filter By Price -->
-                <label for="price" class="productForm__label">Price range</label>
-                <select id="price" class="productForm__input" name="price">
-                    <option value=""> Select price range</option>
-                    <option value="0">less than 1000</option>
-                    <option value="1">between 1000 and 5000</option>
-                    <option value="2">more than 5000</option>
-                </select>
-                <!-- Filter By Price -->
-
-                <!-- Order by Rate-->
-                <label for="order" class="productForm__label">Order</label>
-                <select id="order" class="productForm__input" name="order">
-                    <option value=""> Order by</option>
-                    <option value="rate_asc">Rate (Most popular)</option>
-                    <option value="rate_desc">Rate (Less popular)</option>
-                    <option value="alpha">Alphabetic (A-Z)</option>
-                    <option value="createdAt"> Recent </option>
-                </select>
-
-            </form>
 
 
             <!-- Body Store -->
-            <section class="list">
-              
+            <section class="cartList">
+
+
+
+
+
+
             </section>
             <!-- Body Store -->
 
@@ -195,9 +157,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
 
     <script src="./scripts/general.js"></script>
-    <script src="./scripts/store.js"></script>
-    <script src="./scripts/authModal.js"></script>
+    <script src="scripts/cart.js"></script>
     <script src="./scripts/authUtils.js"></script>
+
 </body>
 
 </html>
