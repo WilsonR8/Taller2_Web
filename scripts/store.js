@@ -32,12 +32,16 @@ const filters = document.querySelector('.filters');
 
 filters.addEventListener('change', function () {
     console.log(filters.price.value);
-    console.log(filters.software.value);
+    console.log(filters.soft.value);
 
     let productCollection = db.collection('products');
     //Filtroooo de type 
     if (filters.type.value) {
         productCollection = productCollection.where('type', '==', filters.type.value)
+    }
+
+    if (filters.soft.value) {
+        productCollection = productCollection.where('soft', '==', filters.soft.value)
     }
 
 

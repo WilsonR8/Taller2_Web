@@ -5,31 +5,9 @@ const productFormSuccess = document.querySelector('.productForm__success');
 const productFormError = document.querySelector('.productForm__error');
 const productFormImages = document.querySelector('.productForm__images');
 
-
-const coursesFields = document.querySelector('.coursesFields');
-const pinsFields = document.querySelector('.pinsFields');
-
 const imageFiles = [];
 
 
-productForm.type.addEventListener('change', function () {
-  console.log(productForm.type.value);
-  coursesFields.classList.add('hidden');
-  pinsFields.classList.add('hidden');
-  switch (productForm.type.value) {
-    case 'courses':
-      coursesFields.classList.remove('hidden');
-      break;
-    case 'assets':
-      coursesFields.classList.remove('hidden');
-      break;
-    case 'pins':
-      pinsFields.classList.remove('hidden');
-      break;
-
-
-  }
-});
 
 
 productForm.image.addEventListener('change', function () {
@@ -60,28 +38,11 @@ productForm.addEventListener('submit', function (event) {
     price: parseInt(productForm.price.value),
     rate: parseInt(productForm.rate.value),
     description: productForm.description.value,
+    soft: productForm.soft.value,
     createdAt: Date.now(),
 
 
   };
-
-  switch (product.type) {
-    case 'pins':
-      product.size = [];
-      if (productForm.size_s.checked) product.size.push('s');
-      if (productForm.size_l.checked) product.size.push('l');
-      break;
-
-    case 'courses':
-      product.software = [];
-      if (productForm.soft_pr.checked) product.software.push('pr');
-      if (productForm.soft_ae.checked) product.software.push('ae');
-      if (productForm.soft_ai.checked) product.software.push('ai');
-      if (productForm.soft_id.checked) product.software.push('id');
-      if (productForm.soft_ps.checked) product.software.push('ps');
-      if (productForm.soft_lr.checked) product.software.push('lr');
-      break;
-  }
 
 
 
@@ -108,6 +69,11 @@ productForm.addEventListener('submit', function (event) {
   if (!product.type) {
     error += "You must select a product type.<br/>";
   }
+
+  if (!product.soft) {
+    error += "You must select a software.<br/>";
+  }
+
   if (error) {
     productFormError.innerHTML = error;
     productFormError.classList.remove('hidden');
@@ -166,11 +132,11 @@ productForm.addEventListener('submit', function (event) {
           productFormLoading.classList.add('hidden');
           productFormSuccess.classList.remove('hidden');
         })
-        .catch(genericCatch);
+          .catch(genericCatch);
       })
-      .catch(genericCatch);
+        .catch(genericCatch);
     })
-    .catch(genericCatch);
+      .catch(genericCatch);
   })
     .catch(genericCatch);
 

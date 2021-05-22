@@ -53,58 +53,20 @@
             <input class="productForm__input" name="rate" type="number">
         </label>
 
-        <!--  Courses Checkbox -->
-        <div class="coursesFields hidden">
-            <label class="productForm__label"> Software </label>
 
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_pr" type="checkbox">
-                Premiere Pro
-            </label>
+        <label for="soft" class="productForm__label">Type of software</label>
+        <select id="soft" class="productForm__input" name="soft">
+            <option value=""> Select a software</option>
+            <option value="pr">Premiere Pro</option>
+            <option value="ae">After Effects</option>
+            <option value="ai">Illustrator</option>
+            <option value="id">InDesign</option>
+            <option value="ps">Photoshop</option>
+            <option value="lr">Lightroom</option>
+        </select>
 
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_ae" type="checkbox">
-                After Effects
-            </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_ai" type="checkbox">
-                Illustrator
-            </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_id" type="checkbox">
-                InDesign
-            </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_ps" type="checkbox">
-                Photoshop
-            </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="soft_lr" type="checkbox">
-                Lightroom
-            </label>
-        </div>
-        <!--  Courses Checkbox -->
-
-        <!--  Pins Checkbox -->
-        <div class="pinsFields hidden">
-            <label class="productForm__label"> Size </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="size_s" type="checkbox">
-                Size S
-            </label>
-
-            <label class="productForm__label productForm__label--checkbox">
-                <input class="productForm__checkbox" name="size_l" type="checkbox">
-                Size L
-            </label>
-        </div>
-        <!--  Pins Checkbox -->
-
+       
+    
 
         <label for="image" class="productForm__label">Image</label>
         <div class="productForm__images"></div>
