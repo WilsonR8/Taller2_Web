@@ -1,3 +1,49 @@
+main{
+    display: flex;
+    flex-direction: row;
+}
+
+
 .side_nav{
-    display: none;
+    width: 40%;
+    position:static;
+    background-color: #262626;
+    .header{
+        margin-top: 0;
+        justify-content: stretch;
+        font-family: 'Poppins', sans-serif;
+        background-color: black;
+    }
+
+    .footimglogo{
+        height: 5rem;
+    .discover{
+       position: relative;
+       left: 2rem;
+       text-decoration: none;
+       color: whitesmoke;
+    }
+    }
+}
+
+.menu{
+    a{
+        text-decoration: none;
+        color: whitesmoke;
+    }
+   
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 2rem;
+   
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media all and (max-width:769px){
+    .side_nav{
+        display: none;
+    }
 }
