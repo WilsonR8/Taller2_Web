@@ -67,7 +67,7 @@ productForm.addEventListener('submit', function (event) {
   }
 
   if (!product.type) {
-    error += "You must select a product type.<br/>";
+    error += "You must select a difficulty.<br/>";
   }
 
   if (!product.soft) {
@@ -141,6 +141,7 @@ productForm.addEventListener('submit', function (event) {
     .catch(genericCatch);
 
 });
+
 
 const checkProductFormAdmin = () => {
   if(!loggedUser || !loggedUser.admin) {

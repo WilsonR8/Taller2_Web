@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Store</title>
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </head>
@@ -50,9 +50,6 @@
                         <i class="fas fa-search"></i>
                     </div>
                 </div>
-                <div class="menu_icon">
-                    <span class="iconify" data-inline="false" data-icon="entypo:menu"></span>
-                </div>
                 <div class="authButtons"></div>
             </div>
 
@@ -69,12 +66,12 @@
 
             <form class="filters">
                 <!-- Filter By Type -->
-                <label for="type" class="productForm__label">Type of product</label>
+                <label for="type" class="productForm__label">Difficulty</label>
                 <select id="type" class="productForm__input" name="type">
-                    <option value=""> Select type</option>
-                    <option value="courses">Courses</option>
-                    <option value="assets">Assets</option>
-                    <option value="pins">Pins</option>
+                    <option value=""> Select difficulty</option>
+                    <option value="intro">Intro</option>
+                    <option value="inter">Intermediate</option>
+                    <option value="adv">Advanced</option>
                 </select>
                 <!-- Filter By Type -->
 
@@ -105,8 +102,8 @@
                 <label for="order" class="productForm__label">Order</label>
                 <select id="order" class="productForm__input" name="order">
                     <option value=""> Order by</option>
-                    <option value="rate_asc">Rate (Most popular)</option>
-                    <option value="rate_desc">Rate (Less popular)</option>
+                    <option value="rate_desc">Rate (Most popular)</option>
+                    <option value="rate_asc">Rate (Less popular)</option>
                     <option value="alpha">Alphabetic (A-Z)</option>
                     <option value="createdAt"> Recent </option>
                 </select>

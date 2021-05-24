@@ -31,14 +31,10 @@ const handleCollectionResult = (querySnapshot) => {
 
         const cartBtn = items.querySelector('.items__cartBtn');
         cartBtn.addEventListener('click', function () {
-            /*cart.push(data);
-            localStorage.setItem('store__cart', JSON.stringify(cart));
-            cartBtnNumber.innerText = cart.length;*/
           addToMyCart({
             ...data,
             id: doc.id,
           });
-          //localStorage.setItem('store__cart', JSON.stringify(cart));
         });
       });
     }
