@@ -28,7 +28,7 @@ db.collection('products')
     productName.innerText = data.name;
     productDescription.innerText = data.description;
     productPrice.innerText = `$ ${data.price}`;
-    productType.innerHTML = `Type: <strong>${data.type}</strong>`;
+    productType.innerHTML = `Difficulty: <strong>${data.type}</strong>`;
 
 console.log(doc.id,doc.data());
 });

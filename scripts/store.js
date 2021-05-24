@@ -18,8 +18,8 @@ const handleCollectionResult = (querySnapshot) => {
         <a class="product" href="./product.html?id=${doc.id}&name-${data.name}">
         <div class="items__info">
             <h1 class="items__title">${data.name}</h1>
-            <h3 class="items__price">${data.price}</h3>
-            <h4 class="items__rate">Rate:${data.rate}</h4>
+            <h3 class="items__price">$${data.price}</h3>
+            <h3 class="items__rate">Rate:${data.rate}</h4>
         </div>
         </a>
         <button class="hidden showLoggedAdmin" >delete</button>

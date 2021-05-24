@@ -14,15 +14,17 @@
 }
 
 .items {
-  
+    
     color: black;
 
     &__img {
         border-radius: 0.5rem;
+        min-width: 300px;
         width: 100%;
     }
 
     &__info {
+        font-family: 'Verdana', sans-serif;
         margin-top: 0;
         
     }
@@ -34,10 +36,13 @@
     }
 
     &__price {
+        font-size: 10px;
     }
 
     &__rate{
-        margin-left:10rem;
+        font-size: 10px;
+        font-family: 'Verdana', sans-serif;
+        margin-left:5rem;
     }
 
     &__cartBtn {
@@ -61,3 +66,28 @@
         background-color: #000000;
     }
 }
+
+.buyBtn{
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: black;
+    background-color: #ffffff;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.buyBtn:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+
+
+
